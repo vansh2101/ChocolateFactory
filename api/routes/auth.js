@@ -52,14 +52,7 @@ router.post('/register', (req, res) => {
     })
     .then(data => {
         res.json({
-            registered: true,
             data: data
-        })
-    })
-    .catch(err => {
-        res.json({
-            registered: false,
-            data: err
         })
     })
 })
