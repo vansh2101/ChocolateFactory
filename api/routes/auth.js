@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bodyParser = require('body-parser')
+const http = require('http')
 const sb = require('@supabase/supabase-js');
 
 
@@ -10,12 +11,16 @@ const config = require('../supabase/config')
 supabase = sb.createClient(config.url, config.key)
 
 
+//middlewares
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
 
+
+//routes
 router.get('/', (req, res) => {
-    res.send('Auth Screen')
+    res.send('Auth related functions')
 })
+
 
 router.post('/login', (req, res) => {
     supabase.auth.signIn({
@@ -23,20 +28,22 @@ router.post('/login', (req, res) => {
         password: req.body.pass
     })
     .then(data => {
-        res.json({
-            authenticated: true,
-            data: data,
-            error: false
+        const post = http.request({
+            host: 'localhost',
+            port: '8000',
+            path: '/user/attendance',
+            method: 'POST',
+            headers: {user: data.user.email}
         })
-    })
-    .catch(err => {
+    
+        post.end()
+
         res.json({
-            authenticated: false,
-            data: err,
-            error: true
+            data: data
         })
     })
 })
+
 
 router.post('/register', (req, res) => {
     supabase.auth.signUp({
@@ -46,15 +53,13 @@ router.post('/register', (req, res) => {
     .then(data => {
         res.json({
             registered: true,
-            data: data,
-            error: false
+            data: data
         })
     })
     .catch(err => {
         res.json({
             registered: false,
-            data: err,
-            error: true
+            data: err
         })
     })
 })
