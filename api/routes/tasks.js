@@ -5,11 +5,11 @@ const sb = require('@supabase/supabase-js');
 
 //supabase
 const config = require('../supabase/config');
-supabase = sb.createClient(config.url, config.key)
+const supabase = sb.createClient(config.url, config.key)
 
 
 router.get("/", (req, res) => {
-  res.send("Supabase check")
+  res.send("Task manager")
 });
 
 router.post("/load", async (req, res) => {
