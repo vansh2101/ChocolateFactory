@@ -25,8 +25,8 @@ async function placeOrder(inv_id) {
     // nodemailer
     let transporter = nodemailer.createTransport({
         host: 'smtp.porkbun.com',
-        port: 587,
-        secure: false,
+        port: 587, // TODO: change to 465
+        secure: false, // true for 465, false for other ports
         auth: {
             user: process.env.EMAIL,
             pass: process.env.PASSWORD
