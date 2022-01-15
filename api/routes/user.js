@@ -7,7 +7,7 @@ const sb = require('@supabase/supabase-js');
 //supabase
 const config = require('../supabase/config')
 
-supabase = sb.createClient(config.url, config.key)
+const supabase = sb.createClient(config.url, config.key)
 
 
 //middlewares
