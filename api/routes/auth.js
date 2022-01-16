@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const bodyParser = require('body-parser')
 const http = require('http')
-const cookieParser = require('cookie-parser')
 const sb = require('@supabase/supabase-js');
 
 
@@ -15,7 +14,6 @@ const supabase = sb.createClient(config.url, config.key)
 //middlewares
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
-router.use(cookieParser())
 
 
 //routes
@@ -29,7 +27,7 @@ router.post('/login', (req, res) => {
         email: req.body.email,
         password: req.body.pass
     })
-    .then(data => {        
+    .then(data => {
         const post = http.request({
             host: 'localhost',
             port: '8000',
