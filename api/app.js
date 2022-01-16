@@ -9,6 +9,7 @@ const details = require('./routes/details')
 const orders = require('./routes/orders')
 const tasks = require('./routes/tasks')
 const feedbacks = require('./routes/feedbacks')
+const rewards = require('./routes/rewards')
 
 
 const app = express()
@@ -24,6 +25,7 @@ app.use('/details', details)
 app.use('/orders', orders)
 app.use('/feedbacks', feedbacks)
 app.use('/tasks', tasks)
+app.use('/reward', rewards)
 
 
 app.get('/', (req, res) => {
