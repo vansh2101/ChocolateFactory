@@ -1,6 +1,9 @@
 api/node_modules
 web/node_modules
 
+# env file
+.env
+
 # Webstorm - Added by Manan
 
 # Created by https://www.toptal.com/developers/gitignore/api/webstorm+all
