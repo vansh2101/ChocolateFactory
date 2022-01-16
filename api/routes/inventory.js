@@ -62,9 +62,9 @@ router.post('/create', async (req, res) => {
         .insert({item, quantity, min_quantity, default_order_value})
         .then(
             res.json({
-                ans: 'done'
+                response: true
             })
-        )
+        );
     // TODO: catch all errors
 })
 
@@ -82,9 +82,9 @@ router.post('/update', async (req, res) => {
             min_quantity = data.data[0].min_quantity;
             curr_quantity = data.data[0].quantity;
         });
-
+    let operation = false;
     if (curr_quantity - quantity_used < 0) {
-        res.send("error")
+        operation = false;
     } else if (curr_quantity - quantity_used < min_quantity) {
         const data = await supabase
             .from('inventory')
@@ -92,7 +92,7 @@ router.post('/update', async (req, res) => {
             .match({item: item})
             .then(data => {
                 if (placeOrder(data.data[0].id)) {
-                    res.send("Order placed");
+                    operation = true;
                 }
             });
     }
@@ -102,8 +102,17 @@ router.post('/update', async (req, res) => {
             .update({quantity: curr_quantity - quantity_used})
             .match({item: item})
             .then(() => {
-                res.send("Inventory updated");
-            })
+                operation = true;
+            });
+    }
+    if (operation) {
+        res.json({
+            response: true
+        })
+    } else {
+        res.json({
+            response: false
+        })
     }
 });
 
