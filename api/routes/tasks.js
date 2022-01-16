@@ -25,10 +25,23 @@ router.post("/claim", (req, res) => {
 
 
 router.post('/complete', (req, res) => {
+    const date = new Date()
+    const today = String(date.getFullYear()) + '-' + String(date.getMonth() + 1) + '-' + String(date.getDate())
+
     supabase.from('orders')
-        .update({status: "completed"})
+        .update({status: "completed", complete_date: today})
         .match({id: req.body.id})
         .then(data => {
+            const post = http.request({
+                host: 'localhost',
+                port: '8000',
+                path: '/reward/give',
+                method: 'POST',
+                headers: {order_id: req.body.id}
+            })
+
+            post.end()
+
             res.json(data);
         })
 });

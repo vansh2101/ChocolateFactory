@@ -27,11 +27,21 @@ router.post('/attendance', (req, res) => {
     supabase.from('employees').select().match({email: email})
     .then(data => {
         if (data.data[0].last_workday > date.getDate()){
+            const salary = data.data[0].salary
+            const bonus = data.data[0].bonus
+
+            const new_salary = salary + Math.floor(bonus/500)*100
+
             supabase.from('employees').update({
                 last_workday: date.getDate(),
-                work_days: 1
+                work_days: 1,
+                bonus: 0,
+                last_salary: new_salary
             })
-            .then(result => console.log(result))
+            .match({email: email})
+            .then(data => {
+                console.log(data)
+            })
         }
 
         else if (data.data[0].last_workday != date.getDate()){
@@ -39,7 +49,9 @@ router.post('/attendance', (req, res) => {
                 last_workday: date.getDate(),
                 work_days: data.data[0].work_days + 1
             })
-            .then(result => console.log(result))
+            .then(data => {
+                console.log(data)
+            })
         }
     })
 })
