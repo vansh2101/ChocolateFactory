@@ -1,22 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './styles/index.css';
+import './index.css';
+import App from './App';
 
-
-//screens
-import Dashboard from './pages/Dashboard';
-
-
-export default function Web(){
-  return(
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Dashboard />} />
-      </Routes>
-    </BrowserRouter>
-  )
-}
-
-
-ReactDOM.render(<Web />, document.getElementById("root"));
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
