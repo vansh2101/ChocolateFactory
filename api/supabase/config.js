@@ -1,4 +1,5 @@
+require('dotenv').config();
 module.exports = {
-    url: <supabase url>,
-    key: <supabase access key>
+    url: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_API_KEY,
 }
