@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+@font-face {
+  font-family: lufga;
+  src: url(../../public/assets/Lufga-Medium.otf);
+}
+
+@font-face {
+  font-family: willywonka;
+  src: url(../../public/assets/WillyWonka.ttf);
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #DE724E;
+}
+
+h1,h2,h3{
+  font-family: lufga;
+}
