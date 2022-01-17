@@ -1,0 +1,48 @@
+body{
+    background-color: #DE724E;
+}
+.logo{
+    font-size: 4rem;
+    font-family: "texta", monospace;
+    display: none;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10%;
+}
+.image img{
+    position: absolute;
+    width: 450px;
+    bottom: 0;
+    right: 10%;
+}
+.login{
+    margin-right: 10%;
+    margin-top: 10%;
+    /* width: 80%; */
+}
+.title{
+    font-size: 3rem;
+    font-family: "texta", monospace;
+    color: #fff;
+    margin-right: 10%;
+    font-weight: bolder;
+}
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+form input{
+    width: 400px;
+    height: 40px;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-family: "texta", monospace;
+    padding-left: 10px;
+    font-size: 1.2rem;
+}
