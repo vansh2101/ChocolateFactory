@@ -26,7 +26,7 @@
 .sidebar{
     background-color: white;
     width: 20%;
-    height: 86vh;
+    height: 90vh;
     border-radius: 15px;
     padding: 10px 0;
 }
@@ -72,6 +72,6 @@
     right: 0;
 }
 .profilebtn img{
-    width: 50%;
+    width: 60%;
     border-radius: 50%;
 }

@@ -4,6 +4,7 @@ import './styles/index.css';
 //screens
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
+import Tasks from './pages/Tasks';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/tasks" element={<Tasks />} />
     </Routes>
     </BrowserRouter>
   );

@@ -1,24 +1,7 @@
-.flexbox{
-    display: flex;
-}
-
-.split{
-    max-width: 100vw;
-    max-height: 100vh;
-    overflow: hidden;
-    padding: 15px 30px;
-    padding-top: 20px;
-}
-
-.container{
-    width: 78%;
-    padding-left: 3%;
-}
-
-
 .left, .right{
     width: 48%;
     padding: 7px;
+    padding-top: 25px;
 }
 
 .taskbox, .bonus, .tasks-status{
@@ -27,7 +10,7 @@
     width: 88%;
     padding: 12px 15px;
     position: relative;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 .taskbox h2{
     margin: 0;

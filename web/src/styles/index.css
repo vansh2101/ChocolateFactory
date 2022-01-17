@@ -14,8 +14,26 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background-color: #DE724E;
+  background-image: url(../../public/assets/bg.png);
 }
 
 h1,h2,h3{
   font-family: lufga;
+}
+
+.flexbox{
+  display: flex;
+}
+
+.split{
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+  padding: 15px 30px;
+  padding-top: 20px;
+}
+
+.container{
+  width: 78%;
+  padding-left: 3%;
 }
