@@ -5,6 +5,7 @@ import './styles/index.css';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Tasks from './pages/Tasks';
+import Stock from './pages/Stock';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Route path="/" element={<Login />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/tasks" element={<Tasks />} />
+      <Route path="/stock" element={<Stock />} />
     </Routes>
     </BrowserRouter>
   );
