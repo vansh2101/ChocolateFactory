@@ -1,5 +1,6 @@
 api/node_modules
 web/node_modules
+api/.env
 
 # env file
 .env
@@ -106,3 +107,4 @@ modules.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/webstorm+all
 
+api/.env
