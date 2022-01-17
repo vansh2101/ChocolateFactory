@@ -1,7 +1,6 @@
 .left, .right{
     width: 48%;
     padding: 7px;
-    padding-top: 25px;
 }
 
 .taskbox, .bonus, .tasks-status{

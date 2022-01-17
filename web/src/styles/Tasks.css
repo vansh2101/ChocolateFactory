@@ -1,3 +1,75 @@
-.tasks{
+.main{
+    margin-top: 4%;
+    margin-left: 0.7%;
+    height: 81vh;
+    overflow-y: auto;
+}
+
+.tasks, .new-tasks, .details{
     background-color: white;
+    border-radius: 12px;
+    width: 90%;
+    padding: 10px 25px;
+    margin-bottom: 2.5%;
+}
+.tasks h1, .new-tasks h1{
+    color: #7D0000;
+    margin-bottom: 0;
+    font-size: 2vw;
+}
+
+.tasks table, .new-tasks table{
+    width: 95%;
+    text-align: left;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+.tasks th, .new-tasks th{
+    text-decoration: underline;
+    color: rgba(0,0,0,0.7);
+}
+
+.task-row{
+    font-weight: bold;
+    font-size: 1.14vw;
+    background-color: #F2F2F2;
+}
+.task-row td{
+    padding: 15px;
+}
+
+.done-btn{
+    font-size: 1.7vw;
+    color: green;
+    cursor: pointer;
+}
+
+
+.new-tasks{
+    width: 60%;
+}
+.new-tasks table{
+    width: 100%;
+}
+.new-tasks .task-row{
+    cursor: pointer;
+}
+
+
+.details{
+    width: 27%;
+    margin-left: 6%;
+    text-align: center;
+}
+.details h3{
+    margin-bottom: 0;
+    font-size: 1.2vw;
+    opacity: 0.8;
+}
+.details h1{
+    color: #7D0000;
+    font-size: 5.3vw;
+    margin-top: 0;
+    margin-bottom: 2%;
 }

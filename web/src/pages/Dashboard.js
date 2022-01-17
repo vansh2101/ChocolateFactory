@@ -37,7 +37,7 @@ function Dashboard() {
                     <ProfileBtn />
                 </div>
 
-                <div className='flexbox main'>
+                <div className='flexbox'>
                     <div className='left'>
                         {tasks.map(item =>
                             <div className='taskbox'>
