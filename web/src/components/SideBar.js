@@ -27,8 +27,8 @@ function SideBar({active}) {
             <h1>Willy Wonka</h1>
 
             <ul>
-                {links.map(item => 
-                <Link to={item.link}><li className={active === item.name.toLowerCase() ? 'active': ''}>{item.icon} <span>{item.name}</span></li></Link>
+                {links.map((item,key) => 
+                <Link to={item.link} key={key}><li className={active === item.name.toLowerCase() ? 'active': ''}>{item.icon} <span>{item.name}</span></li></Link>
                 )}
                 
             </ul>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Stock.css';
 
 //components
@@ -7,22 +7,15 @@ import SideBar from '../components/SideBar';
 import ProfileBtn from '../components/ProfileBtn';
 
 function Employee() {
-    const [employee, setEmployee] = useState([
-        {
-            name: 'Vansh Sachdeva',
-            email: 'vanshsachdeva2005@gmail.com',
-            salary: 20000,
-            bonus: 2500,
-            leaves: 1
-        },
-        {
-            name: 'Manan',
-            email: 'mananman23@gmail.com',
-            salary: 10000,
-            bonus: 500,
-            leaves: 10
-        }
-    ])
+    const date = new Date().getDate()
+
+    const [employee, setEmployee] = useState()
+
+    useEffect(() => {
+        fetch('http://localhost:8000/details/employee')
+        .then(res => res.json())
+        .then(data => setEmployee(data))
+    }, [])
 
     return (
         <div className='split flexbox'>
@@ -40,23 +33,26 @@ function Employee() {
                     <h1>Employees:</h1>
 
                     <table>
-                        <tr>
-                            <th>NAME</th>
-                            <th>EMAIL</th>
-                            <th>SALARY</th>
-                            <th>BONUS</th>
-                            <th>LEAVES</th>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <th>NAME</th>
+                                <th>EMAIL</th>
+                                <th>SALARY</th>
+                                <th>BONUS</th>
+                                <th>LEAVES</th>
+                            </tr>
 
-                        {employee.map(item => 
-                        <tr className='task-row'>
-                            <td>{item.name}</td>
-                            <td>{item.email}</td>
-                            <td>${item.salary}</td>
-                            <td>${item.bonus}</td>
-                            <td>{item.leaves}</td>
-                        </tr>
-                        )}
+                            
+                            {employee? employee.map((item, key) => 
+                            <tr className='task-row' key={key}>
+                                <td>{item.name}</td>
+                                <td>{item.email}</td>
+                                <td>${item.salary}</td>
+                                <td>${item.bonus}</td>
+                                <td>{date - item.work_days}</td>
+                            </tr>
+                            ) :<tr></tr>}
+                        </tbody>
                     </table>
                 </div>
             </div>
