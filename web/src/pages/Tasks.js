@@ -69,7 +69,17 @@ function Tasks() {
     }, [])
 
     const complete = (id) => {
-        console.log(id)
+        fetch('http://localhost:8000/tasks/complete', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({id:id})
+        })
+        .then(res => res.json())
+        .then(data => {
+            setTasks((prev) => {
+                return prev.filter((item) => item.id !== id)
+            })
+        })
     }
 
     if (localStorage.getItem('session')){
