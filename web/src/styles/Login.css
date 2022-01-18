@@ -3,7 +3,7 @@ body{
 }
 .logo{
     font-size: 4rem;
-    font-family: "texta", monospace;
+    font-family: "texta"  ;
     display: none;
 }
 .flex{
@@ -25,7 +25,7 @@ body{
 }
 .title{
     font-size: 3rem;
-    font-family: "texta", monospace;
+    font-family: "texta"  ;
     color: #fff;
     margin-right: 10%;
     font-weight: bolder;
@@ -42,7 +42,23 @@ form input{
     outline: none;
     margin-top: 20px;
     border-radius: 10px;
-    font-family: "texta", monospace;
+    font-family: "texta",  ;
     padding-left: 10px;
     font-size: 1.2rem;
+}
+form button{
+    width: 300px;
+    height: 40px;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-family: "texta",  ;
+    font-size: 1.2rem;
+    background-color: #F2E6D4;
+    color: #7D0000  ;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bolder;
 }

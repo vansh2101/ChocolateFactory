@@ -11,6 +11,7 @@ const Login = () => {
                 <form action="">
                     <input type="email" placeholder="Enter your Email"/>
                     <input type="password" placeholder="Enter your Password"/>
+                    <button>Log In</button>
                 </form>
                 </div>
                 <div className="image">
