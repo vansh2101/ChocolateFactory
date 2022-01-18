@@ -82,6 +82,23 @@ function Tasks() {
         })
     }
 
+    const claim = (id) => {
+        fetch('http://localhost:8000/tasks/claim', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({id:id, employee: localStorage.getItem('session')})
+        })
+        .then(res => res.json())
+        .then(data => {
+            setOrders((prev) => {
+                return prev.filter((item) => item.id !== id)
+            })
+            setTasks(prev => {
+                return [...prev, ...data.data]
+            })
+        })
+    }
+
     if (localStorage.getItem('session')){
         return (
             <div className='split flexbox'>
@@ -132,7 +149,7 @@ function Tasks() {
                                     </tr>
 
                                     {orders ? orders.map((item,key) => 
-                                    <tr className='task-row' key={key}>
+                                    <tr className='task-row' key={key} onClick={() => claim(item.id)}>
                                         <td>{item.name} <br/>{item.email} <br/>{item.order_date}</td>
                                         <td>{item.flavour}</td>
                                         <td>{item.quantity}</td>
