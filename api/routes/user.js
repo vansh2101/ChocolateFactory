@@ -48,7 +48,7 @@ router.post('/attendance', (req, res) => {
             supabase.from('employees').update({
                 last_workday: date.getDate(),
                 work_days: data.data[0].work_days + 1
-            })
+            }).match({email: email})
             .then(data => {
                 console.log(data)
             })
