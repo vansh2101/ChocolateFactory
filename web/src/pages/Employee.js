@@ -20,7 +20,7 @@ function Employee() {
     return (
         <div className='split flexbox'>
             {/* sidebar */}
-            <SideBar active='dashboard'/>
+            <SideBar active='employees'/>
 
             <div className='container'>
                 {/* searchbar */}

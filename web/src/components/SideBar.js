@@ -2,24 +2,53 @@ import React, { useState } from 'react';
 import { RiListCheck2, RiTaskLine, RiFileUserLine } from "react-icons/ri";
 import '../styles/Components.css'
 import { Link } from 'react-router-dom'
+
 function SideBar({active}) {
-    const [links, setLinks] = useState([
-        {
-            name: 'DASHBOARD',
-            link: '/admin',
-            icon: <RiListCheck2/>,
-        },
-        {
-            name: 'TASKS',
-            link: '/tasks',
-            icon: <RiTaskLine/>,
-        },
-        {
-            name: 'PROFILE',
-            link: '/profile',
-            icon: <RiFileUserLine/>,
-        },
-    ])
+    const admin = localStorage.getItem('admin')
+
+    if(admin=='true'){
+        var links = [
+            {
+                name: 'DASHBOARD',
+                link: '/admin',
+                icon: <RiListCheck2/>,
+            },
+            {
+                name: 'TASKS',
+                link: '/tasks',
+                icon: <RiTaskLine/>,
+            },
+            {
+                name: 'STOCK',
+                link: '/stock',
+                icon: <RiFileUserLine/>,
+            },
+            {
+                name: 'EMPLOYEES',
+                link: '/employee',
+                icon: <RiFileUserLine/>,
+            },
+        ]
+    }
+    else{
+        var links = [
+            {
+                name: 'DASHBOARD',
+                link: '/',
+                icon: <RiListCheck2/>,
+            },
+            {
+                name: 'TASKS',
+                link: '/tasks',
+                icon: <RiTaskLine/>,
+            },
+            {
+                name: 'PROFILE',
+                link: '/profile',
+                icon: <RiFileUserLine/>,
+            },
+        ]
+    }
 
     return (
         <div className='sidebar'>
