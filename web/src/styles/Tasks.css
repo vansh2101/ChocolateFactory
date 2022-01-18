@@ -5,7 +5,7 @@
     overflow-y: auto;
 }
 
-.tasks, .new-tasks, .details{
+.tasks, .new-tasks, .det{
     width: 90%;
     margin-bottom: 2.5%;
 }
@@ -54,17 +54,17 @@
 }
 
 
-.details{
+.det{
     width: 27%;
     margin-left: 6%;
     text-align: center;
 }
-.details h3{
+.det h3{
     margin-bottom: 0;
     font-size: 1.2vw;
     opacity: 0.8;
 }
-.details h1{
+.det h1{
     color: #7D0000;
     font-size: 5.3vw;
     margin-top: 0;

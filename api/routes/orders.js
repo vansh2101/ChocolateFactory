@@ -60,5 +60,23 @@ router.get('/past', async (req, res) => {
 
 })
 
+router.get('/month', (req, res) => {
+    supabase.from('orders').select()
+    .then(data => {
+        supabase.from('inventory').select()
+        .then(result => {
+            let count = 0
+            for(let i in data.data){
+                result.data.filter(item => {
+                    if (item.item === data.data[i].flavour){
+                        count = count + item.price
+                    }
+                })
+            }
+            res.json(count)
+        })
+    })
+})
+
 
 module.exports = router

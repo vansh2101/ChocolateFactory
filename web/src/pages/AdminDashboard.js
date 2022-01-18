@@ -14,6 +14,7 @@ function AdminDashboard() {
     const [tasks, setTasks] = useState()
     const [completed, setCompleted] = useState()
     const [orders, setOrders] = useState()
+    const [total, setTotal] = useState()
 
     const [bars, setBars] = useState()
 
@@ -67,101 +68,112 @@ function AdminDashboard() {
         .then(data => {
             setBars(data)
         })
+
+        fetch('http://localhost:8000/orders/month')
+        .then(res => res.json())
+        .then(data => {
+            setTotal(data)
+        })
     }, [])
 
-    return (
-        <div className='split flexbox'>
-            {/* sidebar */}
-            <SideBar active='dashboard'/>
+    if (localStorage.getItem('admin') == 'true'){
+        return (
+            <div className='split flexbox'>
+                {/* sidebar */}
+                <SideBar active='dashboard'/>
 
-            <div className='container'>
-                {/* searchbar */}
-                <div className='flexbox' style={{position: 'relative'}}>
-                    <SearchBar />
-                    <ProfileBtn />
-                </div>
+                <div className='container'>
+                    {/* searchbar */}
+                    <div className='flexbox' style={{position: 'relative'}}>
+                        <SearchBar />
+                        <ProfileBtn />
+                    </div>
 
-                <div className='flexbox main'>
-                    <div className='left-col'>
-                        <div className='flexbox' style={{justifyContent: 'space-between'}}>
-                            <div className='box earnings'>
-                                <h3><RiMoneyDollarCircleFill className='icon'/> Total Earnings</h3>
-                                <h2>$654.19K</h2>
-                                
-                                <h3><FaMoneyBillWave className='icon'/> Goal for the Month</h3>
-                                <h2>$800k</h2>
+                    <div className='flexbox main'>
+                        <div className='left-col'>
+                            <div className='flexbox' style={{justifyContent: 'space-between'}}>
+                                <div className='box earnings'>
+                                    <h3><RiMoneyDollarCircleFill className='icon'/> Total Earnings</h3>
+                                    <h2>${total ? total : 0}</h2>
+                                    
+                                    <h3><FaMoneyBillWave className='icon'/> Goal for the Month</h3>
+                                    <h2>$800k</h2>
 
-                                <h3><GiProfit className='icon'/> Total Profit</h3>
-                                <h2>$245.9k</h2>
+                                    <h3><GiProfit className='icon'/> Total Profit</h3>
+                                    <h2>$245.9k</h2>
+                                </div>
+
+                                <div className='box order-stats flexbox'>
+                                    <div>
+                                        <h3>Completed</h3>
+                                        <h1>{completed ? completed.length : 0}</h1>
+                                    </div>
+
+                                    <div>
+                                        <h3>In Progress</h3>
+                                        <h1>{tasks ? tasks.length : 0}</h1>
+                                    </div>
+
+                                    <div>
+                                        <h3>New</h3>
+                                        <h1>{orders ? orders.length : 0}</h1>
+                                    </div>
+
+                                    <div>
+                                        <h3>Closed</h3>
+                                        <h1>{completed ? completed.length : 0}</h1>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div className='box order-stats flexbox'>
-                                <div>
-                                    <h3>Completed</h3>
-                                    <h1>{completed ? completed.length : 0}</h1>
-                                </div>
+                            <div className='box feedbacks'>
+                                <h1>Customer Feedbacks</h1>
 
-                                <div>
-                                    <h3>In Progress</h3>
-                                    <h1>{tasks ? tasks.length : 0}</h1>
-                                </div>
-
-                                <div>
-                                    <h3>New</h3>
-                                    <h1>{orders ? orders.length : 0}</h1>
-                                </div>
-
-                                <div>
-                                    <h3>Closed</h3>
-                                    <h1>{completed ? completed.length : 0}</h1>
+                                <div className='flexbox' style={{justifyContent: 'space-between'}}>
+                                    {feedbacks ? feedbacks.slice(0,3).map((item,key) => 
+                                    <div className='box feedback-box' key={key}>
+                                        <h3><FaUserCircle className='icon' /> {item.customer}</h3>
+                                        <p>{item.feedback}</p>
+                                    </div>
+                                    ): <></>}
                                 </div>
                             </div>
                         </div>
 
-                        <div className='box feedbacks'>
-                            <h1>Customer Feedbacks</h1>
+                        <div className='box right-col'>
+                            <h1>Performance Stats</h1>
 
-                            <div className='flexbox' style={{justifyContent: 'space-between'}}>
-                                {feedbacks ? feedbacks.slice(0,3).map((item,key) => 
-                                <div className='box feedback-box' key={key}>
-                                    <h3><FaUserCircle className='icon' /> {item.customer}</h3>
-                                    <p>{item.feedback}</p>
+                            <div className='box graph'>
+                                <div className='graphbox flexbox'>
+                                    {bars ? bars.map((item,key) => <div className='bars' style={{height: String((item+1)*10)+'%'}}></div>) : <></>}
+                                </div>
+                                <h2>$250K</h2>
+                                <span>11 January - 18 January 2022</span>
+                            </div>
+
+                            <div className='box employee-box'>
+                                <h2>Top Employees</h2>
+                                
+                                {employee ? employee.map((item,key) =>
+                                <div key={key}>
+                                <div className='employee'>
+                                    <img src='./assets/profile.png' />
+                                    <h4>{item.name} #{item.id}</h4>
+                                    <span>{item.bonus} bonus points</span>
+                                </div>
+                                <hr />
                                 </div>
                                 ): <></>}
                             </div>
                         </div>
                     </div>
-
-                    <div className='box right-col'>
-                        <h1>Performance Stats</h1>
-
-                        <div className='box graph'>
-                            <div className='graphbox flexbox'>
-                                {bars ? bars.map((item,key) => <div className='bars' style={{height: String((item+1)*10)+'%'}}></div>) : <></>}
-                            </div>
-                            <h2>$250K</h2>
-                            <span>11 January - 18 January 2022</span>
-                        </div>
-
-                        <div className='box employee-box'>
-                            <h2>Top Employees</h2>
-                            
-                            {employee ? employee.map((item,key) =>
-                            <div key={key}>
-                            <div className='employee'>
-                                <img src='./assets/profile.png' />
-                                <h4>{item.name} #{item.id}</h4>
-                                <span>{item.bonus} bonus points</span>
-                            </div>
-                            <hr />
-                            </div>
-                            ): <></>}
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
+    else{
+        window.location = '/login'
+    }
 }
 
 export default AdminDashboard

@@ -72,76 +72,81 @@ function Tasks() {
         console.log(id)
     }
 
-    return (
-        <div className='split flexbox'>
-            {/* sidebar */}
-            <SideBar active='tasks'/>
+    if (localStorage.getItem('session')){
+        return (
+            <div className='split flexbox'>
+                {/* sidebar */}
+                <SideBar active='tasks'/>
 
-            <div className='container'>
-                {/* searchbar */}
-                <div className='flexbox' style={{position: 'relative'}}>
-                    <SearchBar />
-                    <ProfileBtn />
-                </div>
-
-                <div className='main'>
-                    <div className='box tasks'>
-                        <h1>Ongoing Tasks</h1>
-
-                        <table>
-                            <tbody>
-                            <tr>
-                                <th>Task Name</th>
-                                <th>Status</th>
-                                <th>Order Date</th>
-                                <th>Action</th>
-                            </tr>
-
-                            {tasks? tasks.map((item,key) =>
-                            <tr className='task-row' key={key}>
-                                <td>{item.quantity} {item.flavour}</td>
-                                <td>{item.status}</td>
-                                <td>{item.order_date}</td>
-                                <td><BsCheck2Square className='done-btn' onClick={() => complete(item.id)}/></td>
-                            </tr>
-                            ): <tr></tr>}
-                            </tbody>
-                        </table>
+                <div className='container'>
+                    {/* searchbar */}
+                    <div className='flexbox' style={{position: 'relative'}}>
+                        <SearchBar />
+                        <ProfileBtn />
                     </div>
 
-                    <div className='flex'>
-                        <div className='box new-tasks'>
-                            <h1>New Orders</h1>
+                    <div className='main'>
+                        <div className='box tasks'>
+                            <h1>Ongoing Tasks</h1>
 
                             <table>
+                                <tbody>
                                 <tr>
-                                    <th>CLIENT</th>
-                                    <th>FLAVOUR</th>
-                                    <th>QUANTITY</th>
+                                    <th>Task Name</th>
+                                    <th>Status</th>
+                                    <th>Order Date</th>
+                                    <th>Action</th>
                                 </tr>
 
-                                {orders ? orders.map((item,key) => 
+                                {tasks? tasks.map((item,key) =>
                                 <tr className='task-row' key={key}>
-                                    <td>{item.name} <br/>{item.email} <br/>{item.order_date}</td>
-                                    <td>{item.flavour}</td>
-                                    <td>{item.quantity}</td>
+                                    <td>{item.quantity} {item.flavour}</td>
+                                    <td>{item.status}</td>
+                                    <td>{item.order_date}</td>
+                                    <td><BsCheck2Square className='done-btn' onClick={() => complete(item.id)}/></td>
                                 </tr>
                                 ): <tr></tr>}
-                                
+                                </tbody>
                             </table>
                         </div>
 
-                        <div className='box details'>
-                            <h3>COMPLETED</h3>
-                            <h1>{completed ? completed.length : 0}</h1>
-                            <h3>IN PROGRESS</h3>
-                            <h1>{tasks ? tasks.length : 0}</h1>
+                        <div className='flex'>
+                            <div className='box new-tasks'>
+                                <h1>New Orders</h1>
+
+                                <table>
+                                    <tr>
+                                        <th>CLIENT</th>
+                                        <th>FLAVOUR</th>
+                                        <th>QUANTITY</th>
+                                    </tr>
+
+                                    {orders ? orders.map((item,key) => 
+                                    <tr className='task-row' key={key}>
+                                        <td>{item.name} <br/>{item.email} <br/>{item.order_date}</td>
+                                        <td>{item.flavour}</td>
+                                        <td>{item.quantity}</td>
+                                    </tr>
+                                    ): <tr></tr>}
+                                    
+                                </table>
+                            </div>
+
+                            <div className='box det'>
+                                <h3>COMPLETED</h3>
+                                <h1>{completed ? completed.length : 0}</h1>
+                                <h3>IN PROGRESS</h3>
+                                <h1>{tasks ? tasks.length : 0}</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
+    else{
+        window.location = '/login'
+    }
 }
 
 export default Tasks

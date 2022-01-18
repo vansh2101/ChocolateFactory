@@ -17,6 +17,7 @@ function Employee() {
         .then(data => setEmployee(data))
     }, [])
 
+    if (localStorage.getItem('admin') == 'true'){
     return (
         <div className='split flexbox'>
             {/* sidebar */}
@@ -58,6 +59,11 @@ function Employee() {
             </div>
         </div>
     )
+    }
+    else{
+        if(localStorage.getItem('admin') == 'false'){window.location = '/'}
+        else{window.location = '/login'}
+    }
 }
 
 export default Employee

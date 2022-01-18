@@ -15,44 +15,50 @@ function Stock() {
         .then(data => setStock(data))
     }, [])
 
-    return (
-        <div className='split flexbox'>
-            {/* sidebar */}
-            <SideBar active='stock'/>
+    if(localStorage.getItem('admin') == 'true'){
+        return (
+            <div className='split flexbox'>
+                {/* sidebar */}
+                <SideBar active='stock'/>
 
-            <div className='container'>
-                {/* searchbar */}
-                <div className='flexbox' style={{position: 'relative'}}>
-                    <SearchBar />
-                    <ProfileBtn />
-                </div>
+                <div className='container'>
+                    {/* searchbar */}
+                    <div className='flexbox' style={{position: 'relative'}}>
+                        <SearchBar />
+                        <ProfileBtn />
+                    </div>
 
-                <div className='box stock'>
-                    <h1>Stock:</h1>
+                    <div className='box stock'>
+                        <h1>Stock:</h1>
 
-                    <table>
-                        <tbody>
-                        <tr>
-                            <th></th>
-                            <th>NAME</th>
-                            <th>QUANTITY</th>
-                            <th>PRICE</th>
-                        </tr>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <th></th>
+                                <th>NAME</th>
+                                <th>QUANTITY</th>
+                                <th>PRICE</th>
+                            </tr>
 
-                        {stock? stock.map((item,key) => 
-                        <tr className='task-row' key={key}>
-                            <td><img src='./assets/bar.png' /></td>
-                            <td>{item.item}</td>
-                            <td>{item.quantity}</td>
-                            <td>${item.price}</td>
-                        </tr>
-                        ): <tr></tr>}
-                        </tbody>
-                    </table>
+                            {stock? stock.map((item,key) => 
+                            <tr className='task-row' key={key}>
+                                <td><img src='./assets/bar.png' /></td>
+                                <td>{item.item}</td>
+                                <td>{item.quantity}</td>
+                                <td>${item.price}</td>
+                            </tr>
+                            ): <tr></tr>}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
+    else{
+        if(localStorage.getItem('admin') == 'false'){window.location = '/'}
+        else{window.location = '/login'}
+    }
 }
 
 export default Stock
