@@ -11,6 +11,7 @@ const tasks = require('./routes/tasks')
 const feedbacks = require('./routes/feedbacks')
 const rewards = require('./routes/rewards')
 const inventory = require('./routes/inventory')
+const transfer = require('./routes/transfer')
 
 
 const app = express()
@@ -28,10 +29,11 @@ app.use('/feedbacks', feedbacks)
 app.use('/tasks', tasks)
 app.use('/reward', rewards)
 app.use('/inventory', inventory)
-
+// app.use('/transfer', transfer)
 
 app.get('/', (req, res) => {
-    res.send('Chocolate Factory')
+    // res.send('Chocolate Factory')
+    res.send(req.cookies);
 })
 
 

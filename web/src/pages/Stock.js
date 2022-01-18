@@ -18,7 +18,7 @@ function Stock() {
     return (
         <div className='split flexbox'>
             {/* sidebar */}
-            <SideBar active='dashboard'/>
+            <SideBar active='stock'/>
 
             <div className='container'>
                 {/* searchbar */}

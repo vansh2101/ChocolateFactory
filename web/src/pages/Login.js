@@ -17,8 +17,16 @@ const Login = () => {
         .then(res => res.json())
         .then(data => {
             if(data.user){
-                if(data.user.user_metadata.admin) navigate('/admin')
-                else navigate('/')
+                if(data.user.user_metadata.admin){
+                    localStorage.setItem('session', data.user.email)
+                    localStorage.setItem('admin', true)
+                    navigate('/admin')
+                }
+                else {
+                    localStorage.setItem('session', data.user.email)
+                    localStorage.setItem('admin', false)
+                    navigate('/')
+                }
             }
             else{console.log(data)}
             
