@@ -32,7 +32,7 @@ function Stock() {
                     <ProfileBtn />
                 </div>
 
-                <div className='stock'>
+                <div className='box stock'>
                     <h1>Stock:</h1>
 
                     <table>
