@@ -3,10 +3,11 @@ const router = express.Router()
 const bodyParser = require('body-parser')
 const http = require('http')
 const sb = require('@supabase/supabase-js');
-
+const cookieParser = require('cookie-parser')
 
 //supabase
 const config = require('../supabase/config')
+const {signedCookie} = require("cookie-parser");
 
 const supabase = sb.createClient(config.url, config.key)
 
@@ -35,8 +36,10 @@ router.post('/login', (req, res) => {
             method: 'POST',
             headers: {user: data.user.email}
         })
-    
-        post.end()
+        // store the session in a cookie
+        res.cookie('email', data.user.email);
+
+        post.end();
 
         res.json({data: data})
     })
