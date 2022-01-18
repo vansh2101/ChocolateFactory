@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { RiListCheck2, RiTaskLine, RiFileUserLine } from "react-icons/ri";
 import '../styles/Components.css'
-
+import { Link } from 'react-router-dom'
 function SideBar({active}) {
     const [links, setLinks] = useState([
         {
@@ -11,12 +11,12 @@ function SideBar({active}) {
         },
         {
             name: 'TASKS',
-            link: '/',
+            link: '/tasks',
             icon: <RiTaskLine/>,
         },
         {
             name: 'PROFILE',
-            link: '/',
+            link: '/profile',
             icon: <RiFileUserLine/>,
         },
     ])
@@ -27,7 +27,7 @@ function SideBar({active}) {
 
             <ul>
                 {links.map(item => 
-                <a href={item.link}><li className={active === item.name.toLowerCase() ? 'active': ''}>{item.icon} <span>{item.name}</span></li></a>
+                <Link to={item.link}><li className={active === item.name.toLowerCase() ? 'active': ''}>{item.icon} <span>{item.name}</span></li></Link>
                 )}
                 
             </ul>
