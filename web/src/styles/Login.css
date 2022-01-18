@@ -21,8 +21,8 @@
     /* width: 80%; */
 }
 .title h1{
-    font-family: "texta";
-    font-size: 3rem;
+    font-family: lufga;
+    font-size: 4vw;
     color: #fff;
     margin-right: 10%;
     /* font-weight: bolder; */
@@ -44,7 +44,7 @@
     font-size: 1.2rem;
 }
 .form button{
-    width: 300px;
+    width: 200px;
     height: 40px;
     border: none;
     outline: none;
@@ -55,8 +55,6 @@
     background-color: #F2E6D4;
     color: #7D0000  ;
     cursor: pointer;
-    margin-left: auto;
-    margin-right: auto;
     font-weight: bolder;
 }
 
