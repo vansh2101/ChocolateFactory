@@ -1,0 +1,88 @@
+.profile{
+    background-color: white;
+    /* width: 900px; */
+    border-radius: 15px;
+    height: 380px;
+}
+.banner img{
+    width: 700px;
+    height: 150px;
+    position: relative;
+    z-index: 100;
+}
+.pfp img{
+    width: 150px;
+    margin-top: -70px;
+    margin-left: 20px;
+    position: absolute;
+    z-index: 100;
+}
+.name h1{
+    margin-left: 200px;
+}
+.name p{
+    margin-left: 200px;
+    margin-top: -20px;
+}
+.summary{
+    background-color: white;
+    width: 700px;
+    border-radius: 15px;
+     margin-top: 20px;
+}
+.summary h1{
+    padding-top: 15px;
+    padding-left: 20px;
+}
+.summary p{
+    max-width: 680px;
+    margin: auto;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+}
+.nice{
+    min-width: 700px;
+}
+.pushpa{
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    right: 5%;
+    top: 15%;
+    width: 260px;
+    height: 230px;
+}
+.pushpa p{
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #7D0000;
+
+}
+.pushpa img{
+    width: 100px;
+}
+.stats{
+    background-color: #F0F0F0;
+    max-width: 400px;
+    max-height: 30px;
+    border-radius: 20px;
+    margin-left: 150px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.progress{
+    background-color: #FFE600;
+    width: 200px;
+    height: 10px;
+    border-radius: 10px;
+    margin-right: 20px;
+
+}

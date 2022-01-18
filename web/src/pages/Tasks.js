@@ -53,7 +53,7 @@ function Tasks() {
                 </div>
 
                 <div className='main'>
-                    <div className='tasks'>
+                    <div className='box tasks'>
                         <h1>Ongoing Tasks</h1>
 
                         <table>
@@ -76,7 +76,7 @@ function Tasks() {
                     </div>
 
                     <div className='flex'>
-                        <div className='new-tasks'>
+                        <div className='box new-tasks'>
                             <h1>New Orders</h1>
 
                             <table>
@@ -97,7 +97,7 @@ function Tasks() {
                             </table>
                         </div>
 
-                        <div className='details'>
+                        <div className='box details'>
                             <h3>COMPLETED</h3>
                             <h1>08</h1>
                             <h3>IN PROGRESS</h3>

@@ -40,7 +40,7 @@ function Dashboard() {
                 <div className='flexbox'>
                     <div className='left'>
                         {tasks.map(item =>
-                            <div className='taskbox'>
+                            <div className='box taskbox'>
                                 <h2>Ongoing Task:</h2>
 
                                 <div className='flexbox'>
@@ -68,7 +68,7 @@ function Dashboard() {
                     </div>
 
                     <div className='right'>
-                        <div className='bonus'>
+                        <div className='box bonus'>
                             <center>
                                 <img src='./assets/graph.png'></img>
 
@@ -85,7 +85,7 @@ function Dashboard() {
                             </center>
                         </div>
 
-                        <div className='tasks-status'>
+                        <div className='box tasks-status'>
                             <h2>Tasks:</h2>
                             <table>
                                 <tr>
