@@ -56,12 +56,12 @@
 }
 
 
-.feedbacks{
+.fb{
     margin-top: 3%;
     height: 32.5vh;
     overflow: hidden;
 }
-.feedbacks h1{
+.fb h1{
     margin: 1.5% 0;
     color: black;
 }

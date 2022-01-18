@@ -10,7 +10,7 @@ function SideBar({active}) {
     const admin = localStorage.getItem('admin')
 
     if(admin=='true'){
-        let links = [
+        var links = [
             {
                 name: 'DASHBOARD',
                 link: '/admin',

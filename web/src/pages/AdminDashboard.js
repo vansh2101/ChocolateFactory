@@ -126,7 +126,7 @@ function AdminDashboard() {
                                 </div>
                             </div>
 
-                            <div className='box feedbacks'>
+                            <div className='box fb'>
                                 <h1>Customer Feedbacks</h1>
 
                                 <div className='flexbox' style={{justifyContent: 'space-between'}}>
