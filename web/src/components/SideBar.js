@@ -52,7 +52,7 @@ function SideBar({active}) {
 
     return (
         <div className='sidebar'>
-            <h1>Willy Wonka</h1>
+            <Link to={"/"}><h1>Willy Wonka</h1></Link>
 
             <ul>
                 {links.map((item,key) =>
