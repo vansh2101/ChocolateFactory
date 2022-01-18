@@ -13,7 +13,7 @@ function Tasks() {
     const [orders, setOrders] = useState()
 
     useEffect(() => {
-        if (localStorage.getItem('admin') == 'false'){
+        if (localStorage.getItem('admin') === 'false'){
             fetch('http://localhost:8000/details/orders', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
