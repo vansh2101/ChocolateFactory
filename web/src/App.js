@@ -10,7 +10,7 @@ import Stock from './pages/Stock';
 import AdminDashboard from './pages/AdminDashboard';
 import Employee from './pages/Employee';
 import Feedbacks from './pages/Feedbacks';
-
+import Camera from './pages/Cam'
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
       <Route path="/employee" element={<Employee />} />
       <Route path="/login" element={<Login />} />
       <Route path="/feedbacks" element={<Feedbacks />} />
+      <Route path="/camera" element={<Camera />} />
     </Routes>
     </BrowserRouter>
   );
