@@ -70,8 +70,8 @@ router.post('/create', async (req, res) => {
 
 
 router.post('/update', async (req, res) => {
-    const item = req.body.item;
-    const quantity_used = req.body.quantity_used;
+    const item = req.headers.item;
+    const quantity_used = req.headers.quantity;
     let min_quantity;
     let curr_quantity;
     const data = await supabase

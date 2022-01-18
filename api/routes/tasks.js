@@ -32,23 +32,26 @@ router.post('/complete', (req, res) => {
         .update({status: "completed", complete_date: today})
         .match({id: req.body.id})
         .then(data => {
-            supabase.from('inventory').select().match({item: data.data[0].flavour})
-            .then(result => {
-                supabase.from('inventory').update({quantity: result.data[0].quantity - data.data[0].quantity}).match({item: data.data[0].flavour})
-                .then(re => {
-                    const post = http.request({
-                        host: 'localhost',
-                        port: '8000',
-                        path: '/reward/give',
-                        method: 'POST',
-                        headers: {order_id: req.body.id}
-                    })
-        
-                    post.end()
-        
-                    res.json(data);
-                })
+            const update = http.request({
+                host: 'localhost',
+                port: '8000',
+                path: '/inventory/update',
+                method: 'POST',
+                headers: {item: data.data[0].flavour, quantity: data.data[0].quantity}
             })
+
+            const post = http.request({
+                host: 'localhost',
+                port: '8000',
+                path: '/reward/give',
+                method: 'POST',
+                headers: {order_id: req.body.id}
+            })
+
+            update.end()
+            post.end()
+
+            res.json(data);
         })
 });
 
