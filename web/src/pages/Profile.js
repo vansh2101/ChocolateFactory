@@ -86,7 +86,7 @@ const Profile = () => {
                                     <h2>Additional Details</h2>
                                     <i className="fas fa-envelope"/>
                                     <h3>EMAIL</h3>
-                                    <p>{user.email}</p>
+                                    <p>{user ? user.email : <></>}</p>
                                     <i className="fas fa-language"/>
                                     <h3>LANGUAGES</h3>
                                     <p>
