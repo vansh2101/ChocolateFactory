@@ -82,8 +82,13 @@
     top: -18%;
 }
 .feedback-box p{
-    margin-bottom: 0;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 5;
     font-size: 1vw;
+    margin-bottom: 0;
 }
 
 

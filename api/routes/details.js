@@ -58,5 +58,13 @@ router.post('/neworders', (req, res) => {
     })
 })
 
+router.get('/topemployee', (req, res) =>{
+    supabase.from('employees').select()
+    .then(data => {
+        const arr = data.data.sort(function(a,b){return b.bonus - a.bonus})
+        res.json(arr)
+    })
+})
+
 
 module.exports = router
