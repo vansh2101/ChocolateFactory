@@ -9,6 +9,7 @@ import Profile from './pages/Profile'
 import Stock from './pages/Stock';
 import AdminDashboard from './pages/AdminDashboard';
 import Employee from './pages/Employee';
+import Feedbacks from './pages/Feedbacks';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Route path="/admin" element={<AdminDashboard />} />
       <Route path="/employee" element={<Employee />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/feedbacks" element={<Feedbacks />} />
     </Routes>
     </BrowserRouter>
   );

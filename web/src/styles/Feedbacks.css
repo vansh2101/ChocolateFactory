@@ -1,0 +1,39 @@
+.feedbacks{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 500px;
+    margin-right: 100px;
+}
+.message{
+    height: 300px;
+}
+.feedbacks input {
+    width: 320px;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    font-family: "texta", serif;
+    font-size: 1.2rem;
+    padding-left: 10px;
+    margin-top: 30px;
+}
+.feedbacks h1{
+    color: white;
+}
+.svg img{
+    width: 400px;
+}
+.fox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.feedbacks button{
+    width: 250px;
+    height: 105px;
+    font-family: "texta", serif;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+}

@@ -155,3 +155,8 @@
     margin: auto;
     margin-top: 5%;
 }
+.all{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

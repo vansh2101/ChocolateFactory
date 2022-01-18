@@ -3,7 +3,7 @@ import '../styles/AdminDashboard.css';
 import {RiMoneyDollarCircleFill} from 'react-icons/ri';
 import {FaMoneyBillWave, FaUserCircle} from 'react-icons/fa';
 import {GiProfit} from 'react-icons/gi';
-
+import { Link } from 'react-router-dom';
 //components
 import SearchBar from '../components/SearchBar';
 import SideBar from '../components/SideBar';
@@ -90,7 +90,10 @@ function AdminDashboard() {
                         </div>
 
                         <div className='box feedbacks'>
-                            <h1>Customer Feedbacks</h1>
+                            <div className="all">
+                                <h1>Customer Feedbacks</h1>
+                                <Link to="/feedbacks" style={{textDecoration: "none", color: "black", fontFamily: "texta", fontWeight: "bold", marginLeft: "50px"}}>See All</Link>
+                            </div>
 
                             <div className='flexbox' style={{justifyContent: 'space-between'}}>
                                 {feedbacks.map(item => 
