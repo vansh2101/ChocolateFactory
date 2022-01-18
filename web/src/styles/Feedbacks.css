@@ -19,11 +19,10 @@
     margin-top: 30px;
 }
 .feedbacks h1{
-    color: white;
+    font-size: 2.4vw;
 }
 .svg img{
     width: 400px;
-    padding-top: 30px;
 }
 .fox{
     display: flex;
@@ -31,11 +30,14 @@
     align-items: center;
 }
 .feedbacks button{
-    width: 250px;
     font-family: "texta", serif;
-    background-color: white;
+    background-color: #F2F2F2;
     border: none;
     border-radius: 10px;
+    width: 70%;
+    padding: 7px 10px;
+    margin-left: 10%;
+    margin-top: 5%;
     cursor: pointer;
-    height: 300px;
+    font-size: 1.4vw;
 }

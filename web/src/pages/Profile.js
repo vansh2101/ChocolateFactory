@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../styles/Profile.css'
 import banner from '../static/banner.png'
 import SideBar from '../components/SideBar'
@@ -6,8 +6,19 @@ import SearchBar from '../components/SearchBar'
 import ProfileBtn from '../components/ProfileBtn'
 import pfp from '../static/profile.png'
 import pushpa from '../static/pushpa.png'
-import {FaUserCircle} from "react-icons/fa";
+
 const Profile = () => {
+    const [user, setUser] = useState()
+
+    useEffect(() => {
+        fetch('http://localhost:8000/details/user', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email:localStorage.getItem('session')})
+        }).then(res => res.json())
+        .then(data => setUser(data))
+    })
+
     return (
         <>
             <div className='split flexbox'>
@@ -30,34 +41,29 @@ const Profile = () => {
                             <img src={pfp} alt="" />
                         </div>
                         <div className="name">
-                            <h1>OompaGG</h1>
+                            <h1>{user ? user.name : <></>}</h1>
                             <p>Factory Employee</p>
                         </div>
-                        {/*<div className="stats">
-                            <div className="progress"></div>
-                            <div className="number">
-                                <p>600/1000 Points</p>
-                            </div>
-                        </div>*/}
+
                         <div className='box detail'>
                             <h1>Stats</h1>
 
                             <div className='flexbox' style={{justifyContent: 'space-between'}}>
                                 <div className='box details-box'>
                                     <h3>Salary</h3>
-                                    <p>$10000</p>
+                                    <p>${user ? user.salary: 0}</p>
                                 </div>
                                 <div className='box details-box'>
                                     <h3>Bonus</h3>
-                                    <p>$100</p>
+                                    <p>${user ? user.bonus: 0}</p>
                                 </div>
                                 <div className='box details-box'>
                                     <h3>Leaves</h3>
-                                    <p>23</p>
+                                    <p>{user ? new Date().getDate() - user.work_days: 0}</p>
                                 </div>
                                 <div className='box details-box'>
                                     <h3>Last month's salary</h3>
-                                    <p>$1000</p>
+                                    <p>${user ? user.last_salary : 0}</p>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +86,7 @@ const Profile = () => {
                                     <h2>Additional Details</h2>
                                     <i className="fas fa-envelope"/>
                                     <h3>EMAIL</h3>
-                                    <p>emailme@oompas.co</p>
+                                    <p>{user.email}</p>
                                     <i className="fas fa-language"/>
                                     <h3>LANGUAGES</h3>
                                     <p>
