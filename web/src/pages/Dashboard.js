@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../styles/Dashboard.css';
 
 //components
@@ -8,22 +8,41 @@ import ProfileBtn from '../components/ProfileBtn';
 
 
 function Dashboard() {
-    const [tasks, setTasks] = useState([
-        {
-            name: 'Vansh Sachdeva',
-            email: 'vanshsachdeva2005@gmail.com',
-            order_date: '16/05/2022',
-            quantity: 200,
-            flavour: 'Nutty Chocolate Surprise'
-        },
-        {
-            name: 'Vansh Sachdeva',
-            email: 'vanshsachdeva2005@gmail.com',
-            order_date: '16/05/2022',
-            quantity: 200,
-            flavour: 'Nutty Chocolate Surprise'
-        }
-    ])
+    const [tasks, setTasks] = useState()
+    const [completed, setCompleted] = useState()
+    const [user, setUser] = useState()
+
+    useEffect(() => {
+        fetch('http://localhost:8000/details/orders', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email:localStorage.getItem('session'), status: 'inprogress'})
+        })
+        .then(res => res.json())
+        .then(data => {
+            setTasks(data)
+        })
+
+        fetch('http://localhost:8000/details/orders', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email:localStorage.getItem('session'), status: 'completed'})
+        })
+        .then(res => res.json())
+        .then(data => {
+            setCompleted(data)
+        })
+
+        fetch('http://localhost:8000/details/user', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email:localStorage.getItem('session')})
+        })
+        .then(res => res.json())
+        .then(data => {
+            setUser(data)
+        })
+    }, [])
 
     return (
         <div className='split flexbox'>
@@ -39,7 +58,7 @@ function Dashboard() {
 
                 <div className='flexbox'>
                     <div className='left'>
-                        {tasks.map(item =>
+                        {tasks ? tasks.slice(0,2).map(item =>
                             <div className='box taskbox'>
                                 <h2>Ongoing Task:</h2>
 
@@ -64,7 +83,16 @@ function Dashboard() {
                                     <span className='small'>QUANTITY</span> <span className='big'>{item.quantity}</span>
                                 </div>
                             </div>
-                        )}
+                        ):
+                        <>
+                        <div className='box taskbox'>
+                                <h2>No Ongoing Task</h2>
+                        </div>
+                        <div className='box taskbox'>
+                            <h2>No Ongoing Task</h2>
+                        </div>
+                        </>
+                        }
                     </div>
 
                     <div className='right'>
@@ -78,8 +106,8 @@ function Dashboard() {
                                         <th>TOTAL SALARY</th>
                                     </tr>
                                     <tr>
-                                        <td>1000</td>
-                                        <td>$20200</td>
+                                        <td>{user ? user.bonus : 0}</td>
+                                        <td>${user ? user.salary + Math.floor(user.bonus/500): 0}</td>
                                     </tr>
                                 </table>
                             </center>
@@ -93,8 +121,8 @@ function Dashboard() {
                                     <th>In Progress</th>
                                 </tr>
                                 <tr>
-                                    <td>08</td>
-                                    <td>02</td>
+                                    <td>{completed ? completed.length: 0}</td>
+                                    <td>{tasks? tasks.length: 0}</td>
                                 </tr>
                             </table>
                         </div>
