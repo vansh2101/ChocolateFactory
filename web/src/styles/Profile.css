@@ -109,3 +109,41 @@
     font-weight: bold;
     margin-left: 1%;
 }
+
+.detail {
+    margin-top: 3%;
+    height: 32.5vh;
+    overflow: hidden;
+}
+.detail h1{
+    margin: 1.5% 0;
+    color: black;
+}
+
+.details-box {
+    width: 20%;
+    background-color: #F2F2F2;
+}
+
+.details-box h3{
+    margin: 0;
+    margin-top: 1%;
+    position: relative;
+    /*padding-left: 19%;*/
+    font-size: 0.8vw;
+    opacity: 0.7;
+}
+
+.details-box .icon{
+    top: -18%;
+}
+
+.details-box p{
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 5;
+    font-size: 1.4vw;
+    margin-bottom: 0;
+}

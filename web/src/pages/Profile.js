@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar'
 import ProfileBtn from '../components/ProfileBtn'
 import pfp from '../static/profile.png'
 import pushpa from '../static/pushpa.png'
+import {FaUserCircle} from "react-icons/fa";
 const Profile = () => {
     return (
         <>
@@ -29,7 +30,7 @@ const Profile = () => {
                             <img src={pfp} alt="" />
                         </div>
                         <div className="name">
-                            <h1>John Doe</h1>
+                            <h1>OompaGG</h1>
                             <p>Factory Employee</p>
                         </div>
                         {/*<div className="stats">
@@ -38,6 +39,28 @@ const Profile = () => {
                                 <p>600/1000 Points</p>
                             </div>
                         </div>*/}
+                        <div className='box detail'>
+                            <h1>Stats</h1>
+
+                            <div className='flexbox' style={{justifyContent: 'space-between'}}>
+                                <div className='box details-box'>
+                                    <h3>Salary</h3>
+                                    <p>$10000</p>
+                                </div>
+                                <div className='box details-box'>
+                                    <h3>Bonus</h3>
+                                    <p>$100</p>
+                                </div>
+                                <div className='box details-box'>
+                                    <h3>Leaves</h3>
+                                    <p>23</p>
+                                </div>
+                                <div className='box details-box'>
+                                    <h3>Last month's salary</h3>
+                                    <p>$1000</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     {/*<div className="summary">
                         <h1>Summary</h1>
