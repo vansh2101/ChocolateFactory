@@ -29,7 +29,7 @@ const Profile = () => {
                             <img src={pfp} alt="" />
                         </div>
                         <div className="name">
-                            <h1>John Doe</h1>
+                            <h1>OompaGG</h1>
                             <p>Factory Employee</p>
                         </div>
                         {/*<div className="stats">
