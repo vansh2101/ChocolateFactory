@@ -154,7 +154,7 @@ function AdminDashboard() {
                             <div className='box employee-box'>
                                 <h2>Top Employees</h2>
                                 
-                                {employee ? employee.map((item,key) =>
+                                {employee ? employee.slice(0,2).map((item,key) =>
                                 <div key={key}>
                                 <div className='employee'>
                                     <img src='./assets/profile.png' />
