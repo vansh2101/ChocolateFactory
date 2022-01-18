@@ -55,9 +55,20 @@ router.post('/register', (req, res) => {
     supabase.auth.signUp({
         email: req.body.email,
         password: req.body.pass
+    }, {
+        data: {
+            admin: req.body.admin
+        }
     })
     .then(data => {
-        res.json({data: data})
+        supabase.from('employees').insert([{
+            name: req.body.name,
+            email: req.body.email,
+            salary: req.body.salary,
+            last_workday: new Date().getDate() -1,
+            Admin: req.body.admin
+        }])
+        .then(data => res.json({data: data}))
     })
 })
 

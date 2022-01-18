@@ -17,7 +17,8 @@ const Login = () => {
         .then(res => res.json())
         .then(data => {
             if(data.user){
-                navigate('/')
+                if(data.user.user_metadata.admin) navigate('/admin')
+                else navigate('/')
             }
             else{console.log(data)}
             
