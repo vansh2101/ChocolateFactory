@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Tasks.css';
 import { BsCheck2Square } from "react-icons/bs";
 
@@ -8,37 +8,45 @@ import SideBar from '../components/SideBar';
 import ProfileBtn from '../components/ProfileBtn';
 
 function Tasks() {
-    const [tasks, setTasks] = useState([
-        {
-            id: '1',
-            name: '200 Dark Chocolates',
-            status: 'inprogress',
-            order_date: '18/01/2022',
-        },
-        {
-            id: '2',
-            name: '250 WonkaBars',
-            status: 'inprogress',
-            order_date: '18/01/2022',
-        }
-    ])
+    const [tasks, setTasks] = useState()
+    const [completed, setCompleted] = useState()
+    const [orders, setOrders] = useState()
 
-    const [orders, setOrders] = useState([
-        {
-            name: 'Vansh Sachdeva',
-            email: 'vanshsachdeva2005@gmail.com',
-            order_date: '18/01/2022',
-            flavour: 'Dark Chocolate',
-            quantity: 200
-        },
-        {
-            name: 'Vansh Sachdeva',
-            email: 'vanshsachdeva2005@gmail.com',
-            order_date: '18/01/2022',
-            flavour: 'Dark Chocolate',
-            quantity: 200
-        }
-    ])
+    useEffect(() => {
+        fetch('http://localhost:8000/details/orders', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email:localStorage.getItem('session'), status: 'inprogress'})
+        })
+        .then(res => res.json())
+        .then(data => {
+            setTasks(data)
+        })
+
+        fetch('http://localhost:8000/details/neworders', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({status: 'pending'})
+        })
+        .then(res => res.json())
+        .then(data => {
+            setOrders(data)
+        })
+
+        fetch('http://localhost:8000/details/orders', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email:localStorage.getItem('session'), status: 'completed'})
+        })
+        .then(res => res.json())
+        .then(data => {
+            setCompleted(data)
+        })
+    }, [])
+
+    const complete = (id) => {
+        console.log(id)
+    }
 
     return (
         <div className='split flexbox'>
@@ -57,6 +65,7 @@ function Tasks() {
                         <h1>Ongoing Tasks</h1>
 
                         <table>
+                            <tbody>
                             <tr>
                                 <th>Task Name</th>
                                 <th>Status</th>
@@ -64,14 +73,15 @@ function Tasks() {
                                 <th>Action</th>
                             </tr>
 
-                            {tasks.map(item =>
-                            <tr className='task-row'>
-                                <td>{item.name}</td>
+                            {tasks? tasks.map((item,key) =>
+                            <tr className='task-row' key={key}>
+                                <td>{item.quantity} {item.flavour}</td>
                                 <td>{item.status}</td>
                                 <td>{item.order_date}</td>
-                                <td><BsCheck2Square className='done-btn'/></td>
+                                <td><BsCheck2Square className='done-btn' onClick={() => complete(item.id)}/></td>
                             </tr>
-                            )}
+                            ): <tr></tr>}
+                            </tbody>
                         </table>
                     </div>
 
@@ -86,22 +96,22 @@ function Tasks() {
                                     <th>QUANTITY</th>
                                 </tr>
 
-                                {orders.map(item => 
-                                <tr className='task-row'>
+                                {orders ? orders.map((item,key) => 
+                                <tr className='task-row' key={key}>
                                     <td>{item.name} <br/>{item.email} <br/>{item.order_date}</td>
                                     <td>{item.flavour}</td>
                                     <td>{item.quantity}</td>
                                 </tr>
-                                )}
+                                ): <tr></tr>}
                                 
                             </table>
                         </div>
 
                         <div className='box details'>
                             <h3>COMPLETED</h3>
-                            <h1>08</h1>
+                            <h1>{completed ? completed.length : 0}</h1>
                             <h3>IN PROGRESS</h3>
-                            <h1>02</h1>
+                            <h1>{tasks ? tasks.length : 0}</h1>
                         </div>
                     </div>
                 </div>
