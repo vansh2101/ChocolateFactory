@@ -32,17 +32,17 @@ const Profile = () => {
                             <h1>John Doe</h1>
                             <p>Factory Employee</p>
                         </div>
-                        <div className="stats">
+                        {/*<div className="stats">
                             <div className="progress"></div>
                             <div className="number">
-                                <p>600/1000 Points</p> 
+                                <p>600/1000 Points</p>
                             </div>
-                        </div>
+                        </div>*/}
                     </div>
-                    <div className="summary">
+                    {/*<div className="summary">
                         <h1>Summary</h1>
                         <p>Chocolatier with 10+ years of experience in creating new chocolate flavours and producing chocolates in the factory. Hard working employee with a fast-paced work ethic and good singing skills. Proven to be a great sales representative and customer service employee.</p>
-                    </div>
+                    </div>*/}
                     </div>
                         <div className="right">
                             <div className="pushpa">
@@ -53,6 +53,26 @@ const Profile = () => {
                                 </div>
                             </div>
                             <div className="details">
+                                <div className={"details-inner"}>
+                                    <h2>Additional Details</h2>
+                                    <i className="fas fa-envelope"/>
+                                    <h3>EMAIL</h3>
+                                    <p>emailme@oompas.co</p>
+                                    <i className="fas fa-language"/>
+                                    <h3>LANGUAGES</h3>
+                                    <p>
+                                        Oompa-Loompish<br/>
+                                        English
+                                    </p>
+                                    <i className="fas fa-id-badge"/>
+                                    <h3>NICKNAME</h3>
+                                    <p>Anvin</p>
+                                    <i className="fas fa-globe-africa"/>
+                                    <h3>COUNTRY</h3>
+                                    <p>
+                                        Loompaland
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
