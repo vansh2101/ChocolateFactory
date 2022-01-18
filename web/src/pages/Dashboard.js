@@ -14,7 +14,7 @@ function Dashboard() {
     const [user, setUser] = useState()
 
     useEffect(() => {
-        fetch('http://localhost:8000/details/orders', {
+        fetch('https://api.exun.hailcore.co/details/orders', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email:localStorage.getItem('session'), status: 'inprogress'})
@@ -25,7 +25,7 @@ function Dashboard() {
             setTasks(data)
         })
 
-        fetch('http://localhost:8000/details/orders', {
+        fetch('https://api.exun.hailcore.co/details/orders', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email:localStorage.getItem('session'), status: 'completed'})
@@ -35,7 +35,7 @@ function Dashboard() {
             setCompleted(data)
         })
 
-        fetch('http://localhost:8000/details/user', {
+        fetch('https://api.exun.hailcore.co/details/user', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email:localStorage.getItem('session')})

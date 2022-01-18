@@ -10,7 +10,7 @@ function Stock() {
     const [stock, setStock] = useState()
 
     useEffect(() => {
-        fetch('http://localhost:8000/inventory/list')
+        fetch('https://api.exun.hailcore.co/inventory/list')
         .then(res => res.json())
         .then(data => setStock(data))
     }, [])

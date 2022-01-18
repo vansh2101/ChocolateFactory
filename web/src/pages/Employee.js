@@ -12,7 +12,7 @@ function Employee() {
     const [employee, setEmployee] = useState()
 
     useEffect(() => {
-        fetch('http://localhost:8000/details/employee')
+        fetch('https://api.exun.hailcore.co/details/employee')
         .then(res => res.json())
         .then(data => setEmployee(data))
     }, [])

@@ -21,13 +21,13 @@ function AdminDashboard() {
     const [employee, setEmployee] = useState()
 
     useEffect(() => {
-        fetch('http://localhost:8000/details/feedback')
+        fetch('https://api.exun.hailcore.co/details/feedback')
         .then(res => res.json())
         .then(data => {
             setFeedbacks(data)
         })
 
-        fetch('http://localhost:8000/details/neworders', {
+        fetch('https://api.exun.hailcore.co/details/neworders', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({status: 'inprogress'})
@@ -37,13 +37,13 @@ function AdminDashboard() {
             setTasks(data)
         })
 
-        fetch('http://localhost:8000/details/topemployee')
+        fetch('https://api.exun.hailcore.co/details/topemployee')
         .then(res => res.json())
         .then(data => {
             setEmployee(data)
         })
 
-        fetch('http://localhost:8000/details/neworders', {
+        fetch('https://api.exun.hailcore.co/details/neworders', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({status: 'pending'})
@@ -53,7 +53,7 @@ function AdminDashboard() {
             setOrders(data)
         })
 
-        fetch('http://localhost:8000/details/neworders', {
+        fetch('https://api.exun.hailcore.co/details/neworders', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({status: 'completed'})
@@ -63,13 +63,13 @@ function AdminDashboard() {
             setCompleted(data)
         })
 
-        fetch('http://localhost:8000/orders/past')
+        fetch('https://api.exun.hailcore.co/orders/past')
         .then(res => res.json())
         .then(data => {
             setBars(data)
         })
 
-        fetch('http://localhost:8000/orders/month')
+        fetch('https://api.exun.hailcore.co/orders/month')
         .then(res => res.json())
         .then(data => {
             setTotal(data)

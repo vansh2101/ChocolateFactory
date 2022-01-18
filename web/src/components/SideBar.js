@@ -31,6 +31,11 @@ function SideBar({active}) {
                 link: '/employee',
                 icon: <GrUserWorker/>,
             },
+            {
+                name: 'CCTV Footage',
+                link: '/camera',
+                icon: <RiFileUserLine/>,
+            },
         ]
     }
     else{

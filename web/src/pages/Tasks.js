@@ -14,7 +14,7 @@ function Tasks() {
 
     useEffect(() => {
         if (localStorage.getItem('admin') === 'false'){
-            fetch('http://localhost:8000/details/orders', {
+            fetch('https://api.exun.hailcore.co/details/orders', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({email:localStorage.getItem('session'), status: 'inprogress'})
@@ -24,7 +24,7 @@ function Tasks() {
                 setTasks(data)
             })
 
-            fetch('http://localhost:8000/details/orders', {
+            fetch('https://api.exun.hailcore.co/details/orders', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({email:localStorage.getItem('session'), status: 'completed'})

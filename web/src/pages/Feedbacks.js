@@ -12,7 +12,7 @@ const Feedbacks = () => {
     const [email, setEmail] = useState()
 
     const submit = () =>{
-        fetch('http://localhost:8000/feedbacks/feedbacks', {
+        fetch('https://api.exun.hailcore.co/feedbacks/feedbacks', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({user:name, feedback:msg, email:email})
