@@ -29,9 +29,9 @@ router.get('/employee', (req, res) => {
 })
 
 router.post('/user', (req, res) => {
-    supabase.from('employees').select().match({email: email})
+    supabase.from('employees').select().match({email: req.body.email})
     .then(data => {
-        res.json(data.data)
+        res.json(data.data[0])
     })
 })
 
@@ -46,6 +46,13 @@ router.get('/feedback', (req, res) => {
 
 router.post('/orders', (req, res) => {
     supabase.from('orders').select().match({status: req.body.status, employee:req.body.email})
+    .then(data => {
+        res.json(data.data)
+    })
+})
+
+router.post('/neworders', (req, res) => {
+    supabase.from('orders').select().match({status: req.body.status})
     .then(data => {
         res.json(data.data)
     })

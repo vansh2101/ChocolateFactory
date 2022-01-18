@@ -58,8 +58,8 @@ function Dashboard() {
 
                 <div className='flexbox'>
                     <div className='left'>
-                        {tasks ? tasks.slice(0,2).map(item =>
-                            <div className='box taskbox'>
+                        {tasks ? tasks.slice(0,2).map((item,key) =>
+                            <div className='box taskbox' key={key}>
                                 <h2>Ongoing Task:</h2>
 
                                 <div className='flexbox'>
