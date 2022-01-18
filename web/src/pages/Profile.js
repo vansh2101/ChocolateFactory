@@ -11,7 +11,7 @@ const Profile = () => {
     const [user, setUser] = useState()
 
     useEffect(() => {
-        fetch('http://localhost:8000/details/user', {
+        fetch('https://api.exun.hailcore.co/details/user', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email:localStorage.getItem('session')})

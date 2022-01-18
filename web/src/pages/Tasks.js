@@ -14,7 +14,7 @@ function Tasks() {
 
     useEffect(() => {
         if (localStorage.getItem('admin') == 'false'){
-            fetch('http://localhost:8000/details/orders', {
+            fetch('https://api.exun.hailcore.co/details/orders', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({email:localStorage.getItem('session'), status: 'inprogress'})
@@ -24,7 +24,7 @@ function Tasks() {
                 setTasks(data)
             })
 
-            fetch('http://localhost:8000/details/orders', {
+            fetch('https://api.exun.hailcore.co/details/orders', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({email:localStorage.getItem('session'), status: 'completed'})
@@ -36,7 +36,7 @@ function Tasks() {
         }
 
         else{
-            fetch('http://localhost:8000/details/neworders', {
+            fetch('https://api.exun.hailcore.co/details/neworders', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({status: 'inprogress'})
@@ -46,7 +46,7 @@ function Tasks() {
                 setTasks(data)
             })
 
-            fetch('http://localhost:8000/details/neworders', {
+            fetch('https://api.exun.hailcore.co/details/neworders', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({status: 'completed'})
@@ -57,7 +57,7 @@ function Tasks() {
             })
         }
 
-        fetch('http://localhost:8000/details/neworders', {
+        fetch('https://api.exun.hailcore.co/details/neworders', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({status: 'pending'})
@@ -69,7 +69,7 @@ function Tasks() {
     }, [])
 
     const complete = (id) => {
-        fetch('http://localhost:8000/tasks/complete', {
+        fetch('https://api.exun.hailcore.co/tasks/complete', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({id:id})
@@ -83,7 +83,7 @@ function Tasks() {
     }
 
     const claim = (id) => {
-        fetch('http://localhost:8000/tasks/claim', {
+        fetch('https://api.exun.hailcore.co/tasks/claim', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({id:id, employee: localStorage.getItem('session')})
