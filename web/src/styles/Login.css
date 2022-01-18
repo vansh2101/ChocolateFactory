@@ -23,12 +23,12 @@ body{
     margin-top: 10%;
     /* width: 80%; */
 }
-.title{
+.title h1{
+    font-family: "texta";
     font-size: 3rem;
-    font-family: "texta"  ;
     color: #fff;
     margin-right: 10%;
-    font-weight: bolder;
+    /* font-weight: bolder; */
 }
 .form{
     display: flex;

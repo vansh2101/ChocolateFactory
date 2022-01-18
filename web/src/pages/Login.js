@@ -30,7 +30,7 @@ const Login = () => {
             <div className="logo">Willy Wonka</div>
             <div className="flex">
             <div className="login">
-                <div className="title">Log In </div>
+                <div className="title"><h1>Log In</h1></div>
                     <div className='form'>
                         <input type="email" placeholder="Enter your Email" onChange={val=>setEmail(val.target.value)}/>
                         <input type="password" placeholder="Enter your Password" onChange={val => setPass(val.target.value)}/>
