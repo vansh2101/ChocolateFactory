@@ -100,7 +100,7 @@ function AdminDashboard() {
                                     <h2>$800k</h2>
 
                                     <h3><GiProfit className='icon'/> Total Profit</h3>
-                                    <h2>$245.9k</h2>
+                                    <h2>$10</h2>
                                 </div>
 
                                 <div className='box order-stats flexbox'>
@@ -147,7 +147,7 @@ function AdminDashboard() {
                                 <div className='graphbox flexbox'>
                                     {bars ? bars.map((item,key) => <div className='bars' style={{height: String((item+1)*10)+'%'}}></div>) : <></>}
                                 </div>
-                                <h2>$250K</h2>
+                                <h2>${total ? total : 0}</h2>
                                 <span>11 January - 18 January 2022</span>
                             </div>
 
