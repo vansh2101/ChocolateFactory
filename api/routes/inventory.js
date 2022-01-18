@@ -127,12 +127,12 @@ router.post('/fetch', async (req, res) => {
         })
 });
 
-router.post('/list', async (req, res) => {
+router.get('/list', async (req, res) => {
     const data = await supabase
         .from('inventory')
         .select('*')
         .then(data => {
-            res.json(data);
+            res.json(data.data);
         })
 });
 

@@ -1,14 +1,10 @@
 .left, .right{
     width: 48%;
     padding: 7px;
-    padding-top: 25px;
 }
 
 .taskbox, .bonus, .tasks-status{
-    background-color: white;
-    border-radius: 12px;
     width: 88%;
-    padding: 12px 15px;
     position: relative;
     margin-top: 30px;
 }

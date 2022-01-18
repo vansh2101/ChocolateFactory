@@ -17,7 +17,7 @@ body {
   background-image: url(../../public/assets/bg.png);
 }
 
-h1,h2,h3{
+h1,h2,h3,h4{
   font-family: lufga;
 }
 
@@ -36,4 +36,10 @@ h1,h2,h3{
 .container{
   width: 78%;
   padding-left: 3%;
+}
+
+.box{
+  background-color: white;
+  border-radius: 12px;
+  padding: 12px 15px;
 }

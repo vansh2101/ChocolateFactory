@@ -38,7 +38,7 @@ router.post('/login', (req, res) => {
     
         post.end()
 
-        res.json({data: data})
+        res.json(data)
     })
 })
 
