@@ -23,6 +23,7 @@
 }
 .svg img{
     width: 400px;
+    padding-top: 30px;
 }
 .fox{
     display: flex;
@@ -31,9 +32,10 @@
 }
 .feedbacks button{
     width: 250px;
-    height: 105px;
     font-family: "texta", serif;
     background-color: white;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
+    height: 300px;
 }

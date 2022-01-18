@@ -24,7 +24,7 @@ const Feedbacks = () => {
                         <input type="email" placeholder="kanye@west.com"/>
                         <input type="password" placeholder="password"/>
                         <input type="text" className="message" placeholder="Your feedback"/>
-                        <button type="submit">Submit</button>
+                        <button type="submit" style={{height: "800px"}}>Submit</button>
                     </div>
                     <div className="svg">
                         <img src={svg} alt=""/>
