@@ -13,15 +13,49 @@ function Tasks() {
     const [orders, setOrders] = useState()
 
     useEffect(() => {
-        fetch('http://localhost:8000/details/orders', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({email:localStorage.getItem('session'), status: 'inprogress'})
-        })
-        .then(res => res.json())
-        .then(data => {
-            setTasks(data)
-        })
+        if (localStorage.getItem('admin') == 'false'){
+            fetch('http://localhost:8000/details/orders', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({email:localStorage.getItem('session'), status: 'inprogress'})
+            })
+            .then(res => res.json())
+            .then(data => {
+                setTasks(data)
+            })
+
+            fetch('http://localhost:8000/details/orders', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({email:localStorage.getItem('session'), status: 'completed'})
+            })
+            .then(res => res.json())
+            .then(data => {
+                setCompleted(data)
+            })
+        }
+
+        else{
+            fetch('http://localhost:8000/details/neworders', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({status: 'inprogress'})
+            })
+            .then(res => res.json())
+            .then(data => {
+                setTasks(data)
+            })
+
+            fetch('http://localhost:8000/details/neworders', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({status: 'completed'})
+            })
+            .then(res => res.json())
+            .then(data => {
+                setCompleted(data)
+            })
+        }
 
         fetch('http://localhost:8000/details/neworders', {
             method: 'POST',
@@ -31,16 +65,6 @@ function Tasks() {
         .then(res => res.json())
         .then(data => {
             setOrders(data)
-        })
-
-        fetch('http://localhost:8000/details/orders', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({email:localStorage.getItem('session'), status: 'completed'})
-        })
-        .then(res => res.json())
-        .then(data => {
-            setCompleted(data)
         })
     }, [])
 

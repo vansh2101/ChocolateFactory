@@ -38,4 +38,27 @@ router.post('/add', (req, res) => {
 })
 
 
+router.get('/past', async (req, res) => {
+    const arr = []
+    const date = new Date()
+    const month = date.getMonth()
+    const year = date.getFullYear()
+    const today = date.getDate() - 7
+
+    for(let i=today; i < today +7; i++){
+        await supabase.from('orders').select()
+        .match({order_date: String(year) + '-' + String(month + 1)+ '-' + String(i)})
+        .then(data => {
+            if(data.data)arr.push(data.data.length)
+            else arr.push(0)
+
+            if (i===today+6){
+                res.json(arr)
+            }
+        })
+    }
+
+})
+
+
 module.exports = router
